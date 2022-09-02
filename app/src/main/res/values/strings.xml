@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
 <!DOCTYPE resources [
-    <!ENTITY appName "Linphone">
+    <!ENTITY appName "VoipMax">
 ]>
 
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
@@ -14,21 +14,21 @@
     <string name="sync_account_name">&appName; contacts</string>
 
     <!-- About screen -->
-    <string name="about_link" translatable="false">https://linphone.org</string>
-    <string name="about_privacy_policy_link" translatable="false">https://www.linphone.org/privacy-policy</string>
+    <string name="about_link" translatable="false">https://voipmax.nl</string>
+    <string name="about_privacy_policy_link" translatable="false">https://www.voipmax.org/privacy-policy</string>
     <string name="about_license_link" translatable="false">https://www.gnu.org/licenses/gpl-3.0.html</string>
     <string name="about_version" translatable="false">&appName; Android %s</string>
     <string name="about_liblinphone_sdk_version" translatable="false">&appName; SDK %s</string>
     <string name="about_privacy_policy">Visit our privacy policy</string>
     <string name="about_text" translatable="false">GNU General Public License v3.0\n © 2010–2022 Belledonne Communications</string>
-    <string name="about_weblate_link" translatable="false">https://weblate.linphone.org/projects/linphone/</string>
+    <string name="about_weblate_link" translatable="false">https://weblate.voipmax.org/projects/voipmax/</string>
     <string name="about_weblate_translation">Help us translate &appName;</string>
 
     <!-- Logs -->
     <string name="logs_upload_failure">Failed to upload logs!</string>
     <string name="logs_reset_complete">Logs have been cleared</string>
     <string name="logs_url_copied_to_clipboard">Logs URL copied into clipboard</string>
-    <string name="about_bugreport_email" translatable="false">linphone-android@belledonne-communications.com</string>
+    <string name="about_bugreport_email" translatable="false">voipmax-android@belledonne-communications.com</string>
 
     <!-- Common -->
     <string name="phone_number">Phone number</string>
@@ -97,7 +97,7 @@
     <string name="no_sip_contact">No SIP contact in your address book.</string>
     <string name="contact_filter_hint">Search contacts</string>
     <string name="contact_send_sms_invite_text">Hello, join me on &appName;! You can download it for free at %s</string>
-    <string name="contact_send_sms_invite_download_link" translatable="false">https://linphone.org/download</string>
+    <string name="contact_send_sms_invite_download_link" translatable="false">https://voipmax.nl/download</string>
     <string name="contact_last_name">Last name</string>
     <string name="contact_first_name">First name</string>
     <string name="contact_organization">Organization</string>
@@ -372,19 +372,19 @@
     <string name="assistant_welcome_desc">This assistant will help you configure and use your SIP account.</string>
     <string name="assistant_create_account">Create account</string>
     <string name="assistant_login_linphone">Use &appName; account</string>
-    <string name="assistant_login_generic">Use SIP account</string>
+    <string name="assistant_login_generic">Use VoipMax account</string>
     <string name="assistant_remote_provisioning">Fetch remote configuration</string>
     <string name="assistant_ec_calibration">Echo canceler calibration in progress</string>
     <string name="assistant_phone_number_info_title">What will my phone number be used for?</string>
     <string name="assistant_phone_number_link_info_content">\nYour friends will find you more easily if you link your account to your phone number\n\nYou will see in your address book who is using &appName; and your friends will know that they can reach you on &appName; as well.\n</string>
     <string name="assistant_phone_number_link_info_content_already_account">You can only use your phone number with one &appName; account.\n\nIf you had already linked your number to an other account but you prefer to use this one, simply link it now and your number will automatically be moved to this account.</string>
-    <string name="assistant_general_terms_link" translatable="false">https://www.linphone.org/general-terms</string>
-    <string name="assistant_privacy_policy_link" translatable="false">https://www.linphone.org/privacy-policy</string>
+    <string name="assistant_general_terms_link" translatable="false">https://www.voipmax.org/general-terms</string>
+    <string name="assistant_privacy_policy_link" translatable="false">https://www.voipmax.org/privacy-policy</string>
     <string name="assistant_general_terms">terms of use</string>
     <string name="assistant_privacy_policy">privacy policy</string>
     <string name="assistant_read_and_agree_terms">I accept Belledonne Communications\' %1$s and %2$s</string>
     <string name="assistant_generic_account_warning">Some features require a &appName; account, such as group messaging or ephemeral messaging.\n\nThese features are hidden when you register with a third party SIP account.\n\nTo enable it in a commercial project, please contact us.</string>
-    <string name="assistant_generic_account_warning_contact_link" translatable="false">https://www.linphone.org/contact</string>
+    <string name="assistant_generic_account_warning_contact_link" translatable="false">https://www.voipmax.nl/contact</string>
     <string name="assistant_generic_account_warning_continue_button_text">I understand</string>
 
     <!-- Assistant errors -->
@@ -403,14 +403,14 @@
     <string name="assistant_linphone_login_desc">Please enter your username and password of &appName; account</string>
     <string name="assistant_login_with_username">Use your username and password instead of your phone number</string>
     <string name="assistant_login_forgotten_password">Forgot your password?</string>
-    <string name="assistant_forgotten_password_link" translatable="false">https://subscribe.linphone.org/</string>
+    <string name="assistant_forgotten_password_link" translatable="false">https://subscribe.voipmax.nl/</string>
     <string name="assistant_login">Login</string>
     <string name="assistant_finish">Finish configuration</string>
     <string name="assistant_confirmation_code">Confirmation code</string>
     <string name="assistant_continue_even_if_credentials_invalid">Continue</string>
 
     <!-- Assistant generic login -->
-    <string name="assistant_generic_account">Use SIP account</string>
+    <string name="assistant_generic_account">Use VoipMax account</string>
     <string name="assistant_login_desc">Please enter your username and password with your SIP domain</string>
     <string name="assistant_display_name_optional">Display name (optional)</string>
 
@@ -691,10 +691,10 @@
     <string name="conferences_settings_layout_title">Default layout</string>
 
     <!-- Notifications -->
-    <string name="notification_channel_service_id" translatable="false">linphone_notification_service_id</string>
-    <string name="notification_channel_missed_call_id" translatable="false">linphone_notification_missed_call_id</string>
-    <string name="notification_channel_incoming_call_id" translatable="false">linphone_notification_call_id</string>
-    <string name="notification_channel_chat_id" translatable="false">linphone_notification_chat_id</string>
+    <string name="notification_channel_service_id" translatable="false">voipmax_notification_service_id</string>
+    <string name="notification_channel_missed_call_id" translatable="false">voipmax_notification_missed_call_id</string>
+    <string name="notification_channel_incoming_call_id" translatable="false">voipmax_notification_call_id</string>
+    <string name="notification_channel_chat_id" translatable="false">voipmax_notification_chat_id</string>
     <string name="notification_channel_service_name">&appName; service notification</string>
     <string name="notification_channel_missed_call_name">&appName; missed calls notifications</string>
     <string name="notification_channel_incoming_call_name">&appName; incoming calls notifications</string>

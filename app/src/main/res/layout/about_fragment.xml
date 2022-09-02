@@ -93,7 +93,7 @@
                         android:adjustViewBounds="true"
                         android:layout_gravity="center"
                         android:contentDescription="@null"
-                        android:src="@drawable/linphone_app_name_logo" />
+                        android:src="@mipmap/ic_launcher" />
 
                     <TextView
                         android:textSize="13sp"

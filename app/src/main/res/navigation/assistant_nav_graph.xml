@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:startDestination="@id/welcomeFragment">
 
-    <fragment
+     <fragment
         android:id="@+id/welcomeFragment"
         android:name="org.linphone.activities.assistant.fragments.WelcomeFragment"
         tools:layout="@layout/assistant_welcome_fragment"
