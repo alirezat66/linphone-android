@@ -1,56 +1,38 @@
 {
   "project_info": {
-    "project_number": "929724111839",
-    "firebase_url": "https://linphone-android-8a563.firebaseio.com",
-    "project_id": "linphone-android-8a563",
-    "storage_bucket": "linphone-android-8a563.appspot.com"
+    "project_number": "352534992332",
+    "project_id": "voipmax-softphone",
+    "storage_bucket": "voipmax-softphone.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:929724111839:android:4662ea9a056188c4",
-        "android_client_info": {
-          "package_name": "nl.voipmax"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "929724111839-co5kffto4j7dets7oolvfv0056cvpfbl.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "nl.voipmax",
-            "certificate_hash": "85463a95603f7b6331899b74b85d53d043dcd500"
-          }
-        },
-        {
-          "client_id": "929724111839-v5so1tcd65iil7dd7sde8jgii44h8luf.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCKrwWhkbA7Iy3wpEI8_ZvKOMp5jf6vV6A"
-        }
-      ]
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:929724111839:android:3cf90ee1d2f8fcb6",
+        "mobilesdk_app_id": "1:352534992332:android:6fc7d4f5d75c634930b969",
         "android_client_info": {
           "package_name": "nl.voipmax.debug"
         }
       },
       "oauth_client": [
         {
-          "client_id": "929724111839-v5so1tcd65iil7dd7sde8jgii44h8luf.apps.googleusercontent.com",
+          "client_id": "352534992332-lscg713m2o4pdq4co8nvo550bkr0dc5s.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCKrwWhkbA7Iy3wpEI8_ZvKOMp5jf6vV6A"
+          "current_key": "AIzaSyD-g8J6ekD2C9ATdE9Si6C92uh5HY__92s"
         }
-      ]
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352534992332-lscg713m2o4pdq4co8nvo550bkr0dc5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

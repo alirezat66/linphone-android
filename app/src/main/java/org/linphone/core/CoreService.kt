@@ -34,6 +34,7 @@ class CoreService : CoreService() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+
         Log.i("[Service] Ensuring Core exists")
         if (corePreferences.keepServiceAlive) {
             Log.i("[Service] Starting as foreground to keep app alive in background")
