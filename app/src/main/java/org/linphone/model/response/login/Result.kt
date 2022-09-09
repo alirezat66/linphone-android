@@ -1,4 +1,4 @@
-package org.linphone.model
+package org.linphone.model.response.login
 
 data class Result(
     val audioCodec: String,
@@ -14,7 +14,7 @@ data class Result(
     val outboundProxyTransport: String,
     val password: String,
     val transport: String,
-    val username: String,
+    val extension: String,
     val videoCodec: String,
     val videoEnabled: Boolean,
     val voicemailEnabled: Boolean,

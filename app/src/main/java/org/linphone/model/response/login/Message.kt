@@ -1,4 +1,4 @@
-package org.linphone.model
+package org.linphone.model.response.login
 
 data class Message(
     val body: String,
