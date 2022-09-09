@@ -11,5 +11,5 @@ interface LoginApiService {
     @POST("/Login")
     fun login(@Body body: JsonObject?): Call<LoginModel?>?
         @POST("/LoginStatus")
-    fun loginStatus(@Body body: JsonObject?) : Call<LoginStatusModel>
+    fun loginStatus(@Body body: JsonObject?) : Call<LoginStatusModel?>?
 }
