@@ -1,6 +1,8 @@
 package org.linphone.services
 
 import com.google.gson.JsonObject
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import org.linphone.model.request.LoginRequest
 import org.linphone.model.request.LoginStatusRequest
 import org.linphone.model.request.PushNotificationRequest
@@ -18,9 +20,21 @@ object RetrofitService {
     private val loginApiService: LoginApiService
     private val pushNotificationApiService: PushNotificationApiService
     init {
+     val   okHttpClient = OkHttpClient.Builder().apply {
+            addInterceptor(
+                Interceptor { chain ->
+                    val builder = chain.request().newBuilder()
+                    builder.header("ApplicationToken ", APPLICATION_TOKEN)
+                    return@Interceptor chain.proceed(builder.build())
+                }
+            )
+        }.build()
+
+
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
             .build()
         loginApiService = retrofit.create(LoginApiService::class.java)
         pushNotificationApiService = retrofit.create(PushNotificationApiService::class.java)
@@ -86,9 +100,9 @@ object RetrofitService {
         })
     }
 
-
-
 }
+
+
 interface  LoginCallback{
     fun onSuccess(loginModel: LoginModel)
     fun onError(exception: Exception)
