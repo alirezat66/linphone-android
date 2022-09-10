@@ -33,7 +33,7 @@ object RetrofitService {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-//            .client(okHttpClient)
+            .client(okHttpClient)
             .build()
         loginApiService = retrofit.create(LoginApiService::class.java)
         pushNotificationApiService = retrofit.create(PushNotificationApiService::class.java)
