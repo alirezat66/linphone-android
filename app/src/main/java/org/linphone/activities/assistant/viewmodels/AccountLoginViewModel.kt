@@ -162,7 +162,7 @@ class AccountLoginViewModel(accountCreator: AccountCreator) : AbstractPhoneViewM
                 usernameError.value = result.name
                 return
             }
-            Log.i("[Assistant] [Account Login] Username is ${accountCreator.username}")
+            Log.i("test [Assistant] [Account Login] Username is ${accountCreator.username}")
 
             val result2 = accountCreator.setPassword(password.value)
             if (result2 != AccountCreator.PasswordStatus.Ok) {

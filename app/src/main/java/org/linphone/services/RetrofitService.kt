@@ -20,30 +20,29 @@ object RetrofitService {
     private val loginApiService: LoginApiService
     private val pushNotificationApiService: PushNotificationApiService
     init {
-     val   okHttpClient = OkHttpClient.Builder().apply {
+        val okHttpClient = OkHttpClient.Builder().apply {
             addInterceptor(
                 Interceptor { chain ->
                     val builder = chain.request().newBuilder()
-                    builder.header("ApplicationToken ", APPLICATION_TOKEN)
+                    builder.header("ApplicationToken", APPLICATION_TOKEN)
                     return@Interceptor chain.proceed(builder.build())
                 }
             )
         }.build()
 
-
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
+//            .client(okHttpClient)
             .build()
         loginApiService = retrofit.create(LoginApiService::class.java)
         pushNotificationApiService = retrofit.create(PushNotificationApiService::class.java)
     }
 
-    fun login(loginRequest: LoginRequest,callback: LoginCallback) {
-        val jsonObject  = JsonObject()
-        jsonObject.addProperty("username","${loginRequest.username}@${loginRequest.domain}")
-        jsonObject.addProperty("password",loginRequest.password)
+    fun login(loginRequest: LoginRequest, callback: LoginCallback) {
+        val jsonObject = JsonObject()
+        jsonObject.addProperty("username", "${loginRequest.username}@${loginRequest.domain}")
+        jsonObject.addProperty("password", loginRequest.password)
         loginApiService.login(jsonObject)?.enqueue(object : Callback<LoginModel?> {
             override fun onResponse(call: Call<LoginModel?>, response: Response<LoginModel?>) {
                 response.body()?.let { callback.onSuccess(it) }
@@ -52,12 +51,14 @@ object RetrofitService {
             override fun onFailure(call: Call<LoginModel?>, t: Throwable) {
                 callback.onError(Exception(t))
             }
-
         })
     }
 
-    fun loginStatus(loginStatusRequest: LoginStatusRequest , loginStatusCallback: LoginStatusCallback ) {
-        val jsonObject  = JsonObject()
+    fun loginStatus(
+        loginStatusRequest: LoginStatusRequest,
+        loginStatusCallback: LoginStatusCallback
+    ) {
+        val jsonObject = JsonObject()
         jsonObject.addProperty("deviceIp", loginStatusRequest.deviceIp)
         jsonObject.addProperty("softwareVersion", loginStatusRequest.softwareVersion)
         jsonObject.addProperty("domain", loginStatusRequest.domain)
@@ -74,44 +75,45 @@ object RetrofitService {
             }
 
             override fun onFailure(call: Call<LoginStatusModel?>, t: Throwable) {
-               loginStatusCallback.onError(Exception(t))
+                loginStatusCallback.onError(Exception(t))
             }
         })
     }
 
-    fun pushNotification(pushNotificationRequest: PushNotificationRequest , pushNotificationCallback: PushNotificationCallback){
-        val jsonObject  = JsonObject()
-        jsonObject.addProperty("deviceToken",pushNotificationRequest.deviceToken)
-        jsonObject.addProperty("callerId",pushNotificationRequest.callerId)
-        jsonObject.addProperty("domain",pushNotificationRequest.domain)
-        jsonObject.addProperty("extension",pushNotificationRequest.extension)
+    fun pushNotification(
+        pushNotificationRequest: PushNotificationRequest,
+        pushNotificationCallback: PushNotificationCallback
+    ) {
+        val jsonObject = JsonObject()
+        jsonObject.addProperty("deviceToken", pushNotificationRequest.deviceToken)
+        jsonObject.addProperty("callerId", pushNotificationRequest.callerId)
+        jsonObject.addProperty("domain", pushNotificationRequest.domain)
+        jsonObject.addProperty("extension", pushNotificationRequest.extension)
         pushNotificationApiService.pushNotificationRequest(jsonObject).enqueue(object :
-            Callback<PushNotificationModel> {
-            override fun onResponse(
-                call: Call<PushNotificationModel>,
-                response: Response<PushNotificationModel>
-            ) {
-                response.body()?.let { pushNotificationCallback.onSuccess(it) }
-            }
+                Callback<PushNotificationModel> {
+                override fun onResponse(
+                    call: Call<PushNotificationModel>,
+                    response: Response<PushNotificationModel>
+                ) {
+                    response.body()?.let { pushNotificationCallback.onSuccess(it) }
+                }
 
-            override fun onFailure(call: Call<PushNotificationModel>, t: Throwable) {
-                pushNotificationCallback.onError(Exception(t))
-            }
-        })
+                override fun onFailure(call: Call<PushNotificationModel>, t: Throwable) {
+                    pushNotificationCallback.onError(Exception(t))
+                }
+            })
     }
-
 }
 
-
-interface  LoginCallback{
+interface LoginCallback {
     fun onSuccess(loginModel: LoginModel)
     fun onError(exception: Exception)
 }
-interface  LoginStatusCallback{
+interface LoginStatusCallback {
     fun onSuccess(loginStatusModel: LoginStatusModel)
     fun onError(exception: Exception)
 }
-interface  PushNotificationCallback{
+interface PushNotificationCallback {
     fun onSuccess(pushNotificationModel: PushNotificationModel)
     fun onError(exception: Exception)
 }

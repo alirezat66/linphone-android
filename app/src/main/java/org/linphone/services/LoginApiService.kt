@@ -10,6 +10,6 @@ import retrofit2.http.POST
 interface LoginApiService {
     @POST("/Login")
     fun login(@Body body: JsonObject?): Call<LoginModel?>?
-        @POST("/LoginStatus")
-    fun loginStatus(@Body body: JsonObject?) : Call<LoginStatusModel?>?
+    @POST("/LoginStatus")
+    fun loginStatus(@Body body: JsonObject?): Call<LoginStatusModel?>?
 }

@@ -7,6 +7,6 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface PushNotificationApiService {
-        @POST("/PushNotification")
-    fun pushNotificationRequest(@Body body: JsonObject?) : Call<PushNotificationModel>
+    @POST("/PushNotification")
+    fun pushNotificationRequest(@Body body: JsonObject?): Call<PushNotificationModel>
 }

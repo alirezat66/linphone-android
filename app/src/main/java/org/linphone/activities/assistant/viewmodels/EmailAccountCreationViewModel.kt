@@ -149,7 +149,6 @@ class EmailAccountCreationViewModel(val accountCreator: AccountCreator) : ViewMo
         accountCreator.password = password.value
         accountCreator.email = email.value
         accountCreator.displayName = displayName.value
-
         waitForServerAnswer.value = true
         val status = accountCreator.isAccountExist
         Log.i("[Assistant] [Account Creation] Account exists returned $status")

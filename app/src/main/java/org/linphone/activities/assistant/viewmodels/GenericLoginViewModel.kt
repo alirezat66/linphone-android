@@ -26,6 +26,10 @@ import androidx.lifecycle.ViewModelProvider
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.core.*
 import org.linphone.core.tools.Log
+import org.linphone.model.request.LoginRequest
+import org.linphone.model.response.login.LoginModel
+import org.linphone.services.LoginCallback
+import org.linphone.services.RetrofitService
 import org.linphone.utils.Event
 
 class GenericLoginViewModelFactory(private val accountCreator: AccountCreator) :
@@ -38,6 +42,7 @@ class GenericLoginViewModelFactory(private val accountCreator: AccountCreator) :
 }
 
 class GenericLoginViewModel(private val accountCreator: AccountCreator) : ViewModel() {
+
     val username = MutableLiveData<String>()
 
     val password = MutableLiveData<String>()
@@ -87,6 +92,7 @@ class GenericLoginViewModel(private val accountCreator: AccountCreator) : ViewMo
     }
 
     init {
+
         transport.value = TransportType.Tls
 
         loginEnabled.value = false
@@ -119,6 +125,30 @@ class GenericLoginViewModel(private val accountCreator: AccountCreator) : ViewMo
     }
 
     fun createProxyConfig() {
+/*        val loginRequest = username.value?.let {
+            password.value?.let { it1 ->
+                domain.value?.let { it2 ->
+                    LoginRequest(
+                        it,
+                        it1, it2
+                    )
+                }
+            }
+        }
+        val ret = RetrofitService
+        ret.login(
+            loginRequest!!,
+            object : LoginCallback {
+                override fun onSuccess(loginModel: LoginModel) {
+                    print("onresponse test is : $loginModel")
+                }
+
+                override fun onError(exception: Exception) {
+                    print("onFailure test is : " + exception.localizedMessage)
+                }
+            }
+        )*/
+
         waitForServerAnswer.value = true
         coreContext.core.addListener(coreListener)
 
