@@ -47,7 +47,7 @@
     to be triggered when BT device is connected / disconnected
     (https://developer.android.com/guide/topics/connectivity/bluetooth/permissions) -->
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".LinphoneApplication"
         android:allowBackup="false"

@@ -125,19 +125,13 @@ class GenericLoginViewModel(private val accountCreator: AccountCreator) : ViewMo
     }
 
     fun createProxyConfig() {
-/*        val loginRequest = username.value?.let {
-            password.value?.let { it1 ->
-                domain.value?.let { it2 ->
-                    LoginRequest(
-                        it,
-                        it1, it2
-                    )
-                }
-            }
-        }
-        val ret = RetrofitService
-        ret.login(
-            loginRequest!!,
+        // for example
+       /* RetrofitService.getLoginApi()
+        RetrofitService.login(
+            LoginRequest(
+                username.value!!,
+                password.value!!, domain.value!!
+            ),
             object : LoginCallback {
                 override fun onSuccess(loginModel: LoginModel) {
                     print("onresponse test is : $loginModel")

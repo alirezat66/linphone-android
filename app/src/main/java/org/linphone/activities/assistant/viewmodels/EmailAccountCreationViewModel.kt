@@ -71,6 +71,7 @@ class EmailAccountCreationViewModel(val accountCreator: AccountCreator) : ViewMo
             response: String?
         ) {
             Log.i("[Assistant] [Account Creation] onIsAccountExist status is $status")
+
             when (status) {
                 AccountCreator.Status.AccountExist, AccountCreator.Status.AccountExistWithAlias -> {
                     waitForServerAnswer.value = false

@@ -1,7 +1,6 @@
 package org.linphone.services
 
 import com.google.gson.JsonObject
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import org.linphone.model.request.LoginRequest
 import org.linphone.model.request.LoginStatusRequest
@@ -17,9 +16,43 @@ object RetrofitService {
     private const val BASE_URL: String = "https://pbx7.voipmax.nl/api/Device/"
     private const val APPLICATION_TOKEN: String = "SJKSHcnMdD8eMgFq090etbjrP8c"
 
-    private val loginApiService: LoginApiService
-    private val pushNotificationApiService: PushNotificationApiService
-    init {
+    var retrofitLoginService: LoginApiService? = null
+    var retrofitPushNotificationService: PushNotificationApiService? = null
+
+    private val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor { chain ->
+            val original = chain.request()
+
+            val requestBuilder = original.newBuilder()
+                .addHeader("ApplicationToken", APPLICATION_TOKEN)
+            val request = requestBuilder.build()
+            chain.proceed(request)
+        }.build()
+    fun getLoginApi(): LoginApiService {
+        if (retrofitLoginService == null) {
+            val retrofit = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build()
+            retrofitLoginService = retrofit.create(LoginApiService::class.java)
+        }
+        return retrofitLoginService!!
+    }
+
+    fun getPushNotificationApi(): PushNotificationApiService {
+        if (retrofitPushNotificationService == null) {
+            val retrofit = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build()
+            retrofitPushNotificationService = retrofit.create(PushNotificationApiService::class.java)
+        }
+        return retrofitPushNotificationService!!
+    }
+
+  /*  init {
         val okHttpClient = OkHttpClient.Builder().apply {
             addInterceptor(
                 Interceptor { chain ->
@@ -37,13 +70,13 @@ object RetrofitService {
             .build()
         loginApiService = retrofit.create(LoginApiService::class.java)
         pushNotificationApiService = retrofit.create(PushNotificationApiService::class.java)
-    }
+    }*/
 
     fun login(loginRequest: LoginRequest, callback: LoginCallback) {
         val jsonObject = JsonObject()
         jsonObject.addProperty("username", "${loginRequest.username}@${loginRequest.domain}")
         jsonObject.addProperty("password", loginRequest.password)
-        loginApiService.login(jsonObject)?.enqueue(object : Callback<LoginModel?> {
+        retrofitLoginService!!.login(jsonObject)?.enqueue(object : Callback<LoginModel?> {
             override fun onResponse(call: Call<LoginModel?>, response: Response<LoginModel?>) {
                 response.body()?.let { callback.onSuccess(it) }
             }
@@ -66,7 +99,7 @@ object RetrofitService {
         jsonObject.addProperty("deviceToken", loginStatusRequest.deviceToken)
         jsonObject.addProperty("deviceType", loginStatusRequest.deviceType)
 
-        loginApiService.loginStatus(jsonObject)?.enqueue(object : Callback<LoginStatusModel?> {
+        retrofitLoginService!!.loginStatus(jsonObject)?.enqueue(object : Callback<LoginStatusModel?> {
             override fun onResponse(
                 call: Call<LoginStatusModel?>,
                 response: Response<LoginStatusModel?>
@@ -89,7 +122,7 @@ object RetrofitService {
         jsonObject.addProperty("callerId", pushNotificationRequest.callerId)
         jsonObject.addProperty("domain", pushNotificationRequest.domain)
         jsonObject.addProperty("extension", pushNotificationRequest.extension)
-        pushNotificationApiService.pushNotificationRequest(jsonObject).enqueue(object :
+        retrofitPushNotificationService!!.pushNotificationRequest(jsonObject).enqueue(object :
                 Callback<PushNotificationModel> {
                 override fun onResponse(
                     call: Call<PushNotificationModel>,
