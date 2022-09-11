@@ -9,10 +9,8 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface LoginApiService {
-    @FormUrlEncoded
     @POST("/Login")
     fun login(@Body body: JsonObject?): Call<LoginModel?>?
-    @FormUrlEncoded
     @POST("/LoginStatus")
     fun loginStatus(@Body body: JsonObject?): Call<LoginStatusModel?>?
 }
